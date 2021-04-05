@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<style type="text/css">
+	
+		.democlass{ color:red; }
+	
+	</style>
+</head>
+<body>
+
+<div id="div">
+	<!-- 여기서 class가 Attribute 즉 속성이고, 뒤의 democlass가 value다 -->
+	<h1 class="democlass" >Hello World_1</h1>
+	<h1 class="democlass" >Hello World_2</h1>
+	<h1 class="democlass" >Hello World_3</h1>
+</div>
+
+</body>
+
+	<script type="text/javascript">
+	
+	//document.getElementsByTagName("h1")[0].removeAttribute("class");
+	/*
+	let arr = document.getElementsByTagName("h1");
+	for(let i = 0; i < arr.length; i++){
+		arr[i].removeAttribute("class");
+	}
+	*/
+	
+	//QUIZ
+	let arr = document.getElementsByTagName("h1");
+	
+	/* 문제 발생
+	for(let index in arr){
+
+			// console.log(arr[index]); 확인차 출력해봄
+			document.getElementById("div").removeChild(arr[index]);
+			console.log("length : " + arr.length);
+			
+			
+		}
+	*/
+	// 이때 발생하는 문제를 해결하라
+	
+	
+	/* 오답^ㅠ^
+	for(let index in arr){
+		
+	if(document.getElementById("div").length === 0){
+			break;
+		}
+		
+		// console.log(arr[index]); 확인차 출력해봄
+		document.getElementById("div").removeChild(arr[index]);
+		console.log("length : " + arr.length);
+		
+		index=0;
+		
+	}
+	*/
+	
+	// 동적배열이라 앞에서부터 삭제하면 인덱스 순서가 바뀌니
+	// 뒤에서부터 지워야 한다
+	
+	//[2] -> [1]  -> [0]  삭제하는 순서 (뒤에서 부터)
+    //[0][1][2]  >> [2] 삭제
+    //[0][1]     >> [1] 삭제
+    //[0]        >> [0] 삭제
+    
+    //[자기 자신 삭제하기]
+    let len = arr.length; //3
+    for(let i = 0 ; i < len ; i++){
+    	//remove() 자기자신 삭제
+    	arr[arr.length -1].remove();
+	}
+	
+	
+	
+	
+	</script>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    /*
+        Jquery의 다중 이벤트(on,off)
+        -필요한 것을 붙였다가 필요없어지면 떼버리는 것
+        :처리하는 코드가 JSON 객체형식을 지원
+        2.x.x 버전까지는 동적 이벤트는 bind()와 unbind()함수로 처리했다
+        그러나 3.x.x버전부터는 이를 버리고 on()과 off()함수를 별도로 제작했다
+
+    */
+   $(function(){
+        //$("p").click(){}
+        //$("p").mouseenter(){}
+        //이렇게 하면 하나의 태그에 두 개의 함수를 건 것 그런데 이렇게 하나하나 쓰는 것이 좋은 방법일까?
+        //차라리 이렇게 하자
+        $("p").on(  //이벤트 추가하기(JSON 객체형태로 사용하면 엄청나게 효율적이 된다)
+                    //함수의 parameter로 JSON객체를 사용하겠다(한 번에 여러 개의 작업을 할 수 있다)
+            {
+                mouseleave:function(){ $(this).css("background-color","red") },
+                click:function(){$(this).css("background-color","green")},
+                mouseenter:function(){$(this).css("background-color","blue")}
+            }
+        );
+        $("button").click(function(){
+            $("p").off("click"); //제거
+        });
+   });
+   //***********on이벤트는 객체를 파라미터로 받을 수 있는데
+   //그 객체 안에 여러 개의 함수를 넣을 수 있다 한 번에 여러 개를 걸어 처리할 수 있는 것!
+   //만약 이벤트를 제거하고 싶다면 off를 사용하면 된다***************
+    </script>
+</head>
+<body>
+    <p>on함수를 사용해서 다중의 이벤트 처리하기</p>
+    <hr>
+    <button>이벤트 제거</button>
+</body>
+</html>

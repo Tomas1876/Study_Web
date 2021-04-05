@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Event 객체</title>
+
+<script type="text/javascript">
+
+/*
+
+
+
+	javascript는 click이나 mouseover 같은 '사건'이 발생하면 내부적으로 객체가 생성된다 그걸 event 객체라고 한다
+	event는 객체 안에 다양한 정보가 있다(사건의 주체, 영향 등) 이벤트 객체를 통틀어 event Object라고 한다
+	
+	<참조자료>
+	https://cafe.naver.com/bit2021/525
+	
+	window.event.메서드
+	window.event.속성
+	
+ */
+ 
+	window.onload = function(){
+		
+		
+		let btn = document.getElementById("mybtn");
+		btn.onclick = function(e){ // 이 e가 java의 Exception e와 비슷한 역할(try/catch블럭의 e)
+								   // 이벤트가 실행돼 이벤트 객체가 생성됐을 때 그 주소를 받을 변수
+			console.log(e.type);			// click 당시 발생한 이벤트의 종류
+			console.log(e.target);			// 이벤트가 걸린 대상(지금 이벤트는 클릭이므로, 여기선 클릭된 대상 즉 "눌러봐"버튼)
+			console.log(e.currentTarget);	// target은 이벤트가 걸린 대상이지만 target은 전체를 보여줌
+			console.log(e.x);
+			console.log(e.y);				// 좌표값
+			
+		
+		}
+		let btn2 = document.getElementById("mybtn2");
+		let handler = function(event){ // 이 event는 객체다
+			switch (event.type) {
+			case "click" : alert("클릭했구나");
+				break;
+			case "mouseover" : event.target.style.backgroundColor="red";
+				break;
+			case "mouseout" : event.target.style.backgroundColor="";
+				break;
+
+			}
+		}; 
+		
+		btn2.onclick = handler;
+		btn2.onmouseover = handler;
+		btn2.onmouseout = handler;
+		
+		}
+</script>
+
+</head>
+<body>
+	<button id="mybtn">
+		<span>눌러봐</span>
+	</button>
+	<br>
+	<button id="mybtn2">눌러봐2</button>
+</body>
+
+
+</html>

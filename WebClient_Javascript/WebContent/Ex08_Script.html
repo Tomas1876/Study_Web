@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*
+	유효성 검증
+	검증 누가??
+	사이트 접속(bit.or.kr) >> 회원가입 버튼 클릭 >> 회원가입 화면 보이고 있다
+	
+	client >>  회원가입 데이터 입력(id, pwd) >> 서버로 전송 >> 서버가 값을 받음 >> 검증 >> Client >> 응답
+	client >>  회원가입 데이터 입력(id, pwd) >> 전송(x) >> 검증(javascript) >> 끝나면 >> 서버로 전송 >> 응답
+	
+	두 번째가 더 좋은 방법(무의미하게 서버 접속하지 않아도 되니까)
+	서버에 접속하는 횟수가 증가할 수록 네트워크 트래픽이 증가한다 비용이 드는 일이라 좋지 않다
+	
+	우리가 원하는 검증은 글자 수, 특수문자 표기 등등인데 굳이 자바코드가 할 필요는 없는 것
+	client에서 할 수 있는 모든 검증은 client에서 하는 것이 바람직하다(javascript가 하는 것)
+	
+	그렇다면
+	id에 대한 중복 검사는? 이런 건 서버와 통신해서 중복 검사해야 한다
+	 */
+	function send() {
+		// 유효성 검증 하고 문제 없다면 >> 서버로 전송
+		// 원하는 값이 아니라면 재입력 요청
+
+		// 1.요소의 정보를 가지고 와야 한다.
+		// var ele = document.forms[0].elements[0].value
+		// 최종적으로는 DOM사용
+
+		let inputuserid = document.loginform.txtuserid;
+		//inputuserid  == <input type="text"   name="txtuserid">
+		console.log(inputuserid);
+		console.log(inputuserid.value);
+
+		//DOM을 사용한다면?(이때 태그의 식별자는 id여야 한다)
+		let userpwd = document.getElementById("txtpwd");
+		console.log(userpwd);
+		console.log(userpwd.value);
+
+		// 검증로직
+		// 1. 입력했는지
+		// 2. 입력한 값이 로직에 맞는지
+		if (inputuserid.value == "" // 내가 원하는 데이터는 3~10인데 그게 아니라면!
+				|| !(inputuserid.value.length >= 3 && inputuserid.value.length <= 10)) {
+			alert("다시 입력해");
+			document.loginform.txtuserid.focus();
+			inputuserid.select(); //select는 선택하는 함수(블럭)
+		} else {
+			alert("검증 완료");
+			// 서버로 전송
+			// 원래대로라면
+			// form action="주소" method=""
+
+			document.loginform.action = "Ex08_login.jsp";
+			document.loginform.submit(); //form태그의 내장함수(전송) 
+		}
+	}
+</script>
+</head>
+<body>
+	<form action="" method="get" name="loginform">
+		ID: <input type="text" name="txtuserid"> PWD:<input
+			type="password" name="txtpwd" id="txtpwd"> <input
+			type="button" value="전송" onclick="send()">
+		<!-- 
+			서버로 전송하는 타입은 
+			type="submit"
+			type="image"
+			type="button" onclick="함수에서 전송처리"
+			버튼은 내부적으로 없기 때문에 onclick이벤트를 열어주어야 한다
+		 -->
+	</form>
+</body>
+</html>

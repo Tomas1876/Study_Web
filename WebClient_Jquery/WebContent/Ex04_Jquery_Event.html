@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    //$(document).ready(function(){})
+    //아래는 위의 것을 줄인 표현
+    $(function(){
+        $("#btncopy").click(function(){
+            //let data = $("#txtuserid").val();
+            //input 태그의 id가 txtuserid인 태그의 value값을 가져온다는 뜻
+            //$("#txtcopyuserid").val(data);
+            //위의 두 줄을 더 줄일 수는 없을까?
+            $("#txtcopyuserid").val($("#txtuserid").val()); 
+        });
+
+        //select 태그
+        $("#select_hobby").change(function(){
+            const text = $(":selected").text();
+            const text2 = $("#select_hobby option:selected").text();
+                        //id가 select_hobby인 것의 자식 option 중에서 선택된 것(:selected)의 텍스트를 선택
+            const val = $("#select_hobby").val();
+            console.log(text);
+            console.log(text2);
+            console.log(val);
+        });
+                // 키를 눌렀다가 뗐을 때
+        $("#txtpwd2").keyup(function(){
+            if($("#txtpwd").val() != $("#txtpwd2").val()){
+                $("#message").text("<h3>암호가 일치하지 않습니다</h3>");
+            }else{
+                $("#message").html("<h3>암호가 일치합니다</h3>");
+                // text와 html의 결과값
+            }
+        });
+
+       // console.log($("input"));
+       // 위의 선택자는 body안의 모든 input 태그를 가져온다 즉 배열을 리턴
+
+       $("input").focus(function(){
+            console.log($(this)); //여기서 this는  이벤트가 걸린 주체 즉 input태그
+            $(this).css("background-color","gray");
+       });
+       $("input").blur(function(){
+            console.log($(this)); //여기서 this는 함수가 걸린 주체 즉 input태그
+            $(this).css("background-color","white");
+       });
+
+       //toggle 기능(위의 포커스/블러처럼 둘 중 무조건 하나인 것 on/off처럼)
+       $("p").hover(function(){
+            $(this).css("background-color","gold");
+       }, function(){ //무조건 hover거나 아니거나 둘 중 하나기 때문에 두 개의 함수를 걸 수 있다
+            $(this).css("background-color","red");
+       });
+    });
+</script>
+
+</head>
+<body>
+    <p>Jquery hover(mouseover , mouseleave)</p>
+	
+	ID:<input type="text" id="txtuserid">
+	<hr>
+	<input type="button" id="btncopy" value="copy">
+	<hr>
+	Copy ID:<input type="text" id="txtcopyuserid">
+	
+	<hr>
+	<select id="select_hobby">
+		<option value="JAVA">java</option>
+		<option value="SCRIPT">script</option>
+		<option>jdbc</option>
+	</select>
+	<br>
+	<input type="text" id="txtselect">
+	<hr>
+	<table style="border: 1px solid red;">
+		<tr>
+			<td>암호</td>
+			<td>
+				<input type="text" id="txtpwd" size="20" maxlength="5">
+			</td>
+		</tr>
+		<tr>
+			<td>암호확인</td>
+			<td>
+				<input type="text" id="txtpwd2" size="20" maxlength="5">
+			</td>
+		</tr>
+	</table>
+	<div id="message" style="color: red"></div> 
+</body>
+</html>

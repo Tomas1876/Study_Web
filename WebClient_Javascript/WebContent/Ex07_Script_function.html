@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	//function call(){}
+	//myfun = function(){}
+	
+	// function(){} 는 익명함수
+	// 원래 함수는 이름을 불러서 호출한다
+	
+	// callback함수(프로그램 논리에 의해 자동으로 호출되는 함수) > 1초마다(설정한 시간마나) 재호출 > 익명함수
+	//
+	// 아래는 function(){} 을 다른 곳에 안 쓰고 setInterval만 쓰겠다는 뜻 1000밀리초니까 1초마다 재호출
+	//원래는 window.setInterval이다 setInterval읜 window객체의 자원
+		var myTime = window.setInterval(function(){
+			let d = new Date(); // java : Date d = new Date()
+			let t = d.toLocaleTimeString();
+			document.getElementById("time").innerHTML = t;
+		},1000);
+		// 1000밀리초마다 함수를 호출해서 시간을 갱신하라는 뜻
+		
+		// 여기서 myTime은 setInterval이다
+		function myTimeStop(){
+			window.clearInterval(myTime);
+		}
+		
+	</script>
+</head>
+<body>
+		<p id="time"></p>
+		<button onclick="myTimeStop()">stop Time</button>
+</body>
+</html>

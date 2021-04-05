@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	let str = "10+20+30";
+	document.write(str + "<br>");
+	
+	// 1. eval()
+	// 문자형 수식을 계산식으로 바꿔줌(단, 문자열 껍데기를 벗겼을 때 실제로 수식이어야함 a 같은 게 들어있으면 안됨)
+	// 문자형 숫자를 -> 숫자로 바꿔준다는 것
+	document.write("eval(): "+ eval(str) + "<br>");
+	
+	// 2. isNaN() >> Not a Number의 약자(함수 이름 앞에 is가 오면 질문이다)>>
+	// 너 숫자 아니지?라는 함수 true : 숫자가 아니라는 뜻 / false : 숫자 맞음
+	// ""으로 숫자를 감싸도 이 함수는 ""을 벗겨보기 때문에 "1234"는 숫자로 나온다(false)
+	document.write(isNaN("12345") + "<br>");
+	document.write(isNaN("12345A") + "<br>");
+	document.write(isNaN("대한민국") + "<br>");
+	document.write(isNaN('12345') + "<br>");
+	
+	// 3. 문자열 함수
+	// https://www.w3schools.com/jsref/jsref_obj_string.asp 참조
+	
+	// 4. 숫자 함수 (자바스크립트는 숫자를 int가 아니라 number로 표현한다 오라클과 동일)
+	// https://www.w3schools.com/js/js_number_methods.asp 참조
+	// https://www.w3schools.com/js/jsref/jsref_obj_number.asp 참조
+	
+	let i = "100";
+	let j = "200"; // 이건 이백이 아니라 이공공이라고 읽어야 한다 숫자가 아니라 문자인걸
+	
+	document.write("결합 : " + (i + j)); // +는 산술도 결합도 가능
+	document.write("<br> 숫자변환 : "+ (Number(i) + Number(j)));
+	
+	//Number();
+	//parseInt();
+	//parseFloat();
+	
+	
+	// !!!!Event!!!!
+	// javascript는 여러가지 사건(event)를 만들어 뒀다
+	// 그 사건에 맞춰 행위를 만들 수 있다
+	// 물론 사용자 정의 사건을 만들 수도 있다
+	
+	// 주목해야 할 것은 어떤 이벤트가 어떤 시점에 발생하는 거다
+	/*
+		Event			Description
+		onchange		An HTML element has been changed
+		onclick			The user clicks an HTML element
+		onmouseover		The user moves the mouse over an HTML element
+		onmouseout		The user moves the mouse away from an HTML element
+		onkeydown		The user pushes a keyboard key
+		onload			The browser has finished loading the page
+		
+		최소 이 정도는 알고 있어야 한다 특히 onload가 중요함
+		(Description의 주어가 user가 아니면 자동)
+		
+		-onload			The browser has finished loading the page
+		index.html이라는 문서가 있을 때 그 문서의 body 안에 있는 모든 요소가 메모리(웹 브라우저)에 로딩되고 난 후에
+		!!자동으로!! 이벤트가 호출된다
+		사건이 호출되면, 개발자는 사건이 처리하는 행위를 만들어야 한다 onload="" 에서 ""안의 내용이 그것
+	*/
+	
+	function bodyload(){
+		console.log("load");
+		// body안의 모든 요소가 로딩되고 난 후 실행되는 함수니까
+		// !!모든 요소를 이용할 수 있다는 것이 보장된다!!
+		// 지금은 모르겠지만 이 말이 굉장히 중요한 말이다
+		
+		let data = document.myform.money.value;
+		console.log(isNaN(data));
+		
+	}
+	
+	function focusFunc(){
+		document.getElementById("myinput").style.background="gold";
+	}
+	
+	function blurFunc(){
+		document.getElementById("myinput").style.background="white";
+	}
+	
+	function selectTag(){
+		let val = document.myform.sel.value;
+		alert(val);
+	}
+	
+	function changeColor(obj){
+		// java와 javascript의 this는 비슷해보이지만 다르다
+		
+		// javascript에서 this는 this를 가진 요소 자신을 의미한다
+		// obj가 this를 받는데 그건 즉
+		//<input type="text" onmouseover="changeColor(this)" onmouseout="">
+		// 전체를 가리킨다
+		console.log(obj);
+		obj.style.backgroundColor="gold";
+	}
+	
+	function changeColor2(obj){
+		obj.style.backgroundColor="white";
+	}
+</script>
+
+</head>
+<body onload="bodyload()">
+	<form action="#" name="myform">
+		<input type="text" id="myinput" name="myinput" onfocus="focusFunc()" onblur="blurFunc()">
+		
+		<select name="sel" onchange="selectTag()">
+			<option value="A">AA</option>
+			<option value="B">BB</option>
+			<option value="C">CC</option>
+			<option value="D">DD</option>
+		</select>
+		<input type="text" onmouseover="changeColor(this)" onmouseout="changeColor2(this)" >
+		<!-- 위의 this는 input태그를 가리킨다 -->
+		<br>
+		<input type="text" onkeypress="alert('왜뭐왜')">
+		<br>
+		<input type="text" value="1000" name="money" >
+		
+	</form>
+</body>
+</html>

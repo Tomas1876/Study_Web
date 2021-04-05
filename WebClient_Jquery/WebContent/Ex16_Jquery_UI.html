@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/sunny/jquery-ui.css">
+	<style>
+	</style>
+	<title>Document</title>
+	<script>
+		$(document).ready(function () {
+			var availableTags = [
+				"ActionScript",
+				"AppleScript",
+				"Asp",
+				"BASIC",
+				"C",
+				"C++",
+				"Clojure",
+				"COBOL",
+				"ColdFusion",
+				"Erlang",
+				"Fortran",
+				"Groovy",
+				"Haskell",
+				"Java",
+				"JavaScript",
+				"Lisp",
+				"Perl",
+				"PHP",
+				"Python",
+				"Ruby",
+				"Scala",
+				"Scheme"
+			];
+			/*
+		$("#tags").autocomplete(
+				{
+					source:availableTags
+				}
+		);
+		*/
+		// autocomplete 함수를 직접 구현한다면?
+
+		//availableTags 데이터가 DB Table에 있다면?
+		//서버에 A글자를 전송한다면 Like %A%
+		//가공을 서버에서 하는 것이 좋을까? 디자인을?
+		//옛날에는 서버에서 다 디자인해서 클라이언트에세 보냈지만
+		//요즘 클라이언트의 성능이 매우 좋아져서 서버는 데이터관리만 한다
+		//서버는 클라이언트에게 XML이나 JSON객체 형식으로 보내주고 끝
+		//점점 클라이언트가 하는 일이 많아진다
+
+		})
+	</script>
+</head>
+
+<body>
+	<div class="ui-widget">
+		<label for="tags">Tags: </label>
+		<input id="tags">
+	</div>
+</body>
+
+</html>

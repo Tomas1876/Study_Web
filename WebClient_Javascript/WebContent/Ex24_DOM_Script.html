@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<script type="text/javascript">
+	
+		window.onload=function(){
+			
+			// 계층 트리 형태기 때문에 가능(node개념)
+			let monode;
+			menode = document.getElementById("me");
+			menode.style.backgroundColor="gold";
+			
+			let parentnode = menode.parentNode; //body
+			parentnode.style.backgroundColor="green";
+			
+			let grandnode = parentnode.parentNode; // html
+			grandnode.style.backgroundColor="blue";
+			
+			let my = document.getElementById("mychlid");
+			console.log(my);
+			console.log(my.firstChild.nodeName); //LI
+			console.log(my.firstChild.innerText); //AA
+			// innerHTML
+			// innerText - 안쪽을 다 텍스트로만 봄
+			// 둘 다 주로 p, div, li, span 태그 즉 value값이 없는 태그에 쓴다
+			
+			console.log(my.firstChild.nextSibling.innerText); //BB
+			
+			console.log(my.childNodes); // Array 배열 [AA][BB][CC]
+			console.log(my.childNodes.length);
+			
+		}
+	</script>
+</head>
+<body>
+<div>A</div><div>B</div><div id="me">C</div><div>D</div><div>E</div>
+<ul id = "mychlid"><li>AA</li><li>BB</li><li>CC</li></ul>
+</body>
+</html>

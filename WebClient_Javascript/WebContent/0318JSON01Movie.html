@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+* {
+	padding: 0;
+	margin: 0;
+}
+
+#div {
+	width: 1200px;
+	height: 550px;
+	margin: auto;
+}
+
+#title {
+padding: 20px;
+text-align: center;
+}
+
+#tab {
+	width: 100%;
+	height: 100%;
+	border-collapse: collapse;
+	
+}
+
+#tab th {
+	background-color: powderblue;
+	border: 1px solid white;
+	text-align:center;
+}
+
+#tab tr, td {
+	border: 1px solid powderblue;
+
+}
+
+#index {
+	text-align: center;
+	background-color: red;
+}
+#div p {
+	padding: 10px;
+}
+</style>
+
+</head>
+<body>
+	<div id="div"></div>
+
+</body>
+<script type="text/javascript">
+	window.onload = function() {
+		
+		//제목 만들기
+		let title = document.createElement("h2");
+		title.setAttribute("id", "title");		
+		let titleText = document.createTextNode("제주 공공 와이파이 정보");
+		title.appendChild(titleText);
+		
+
+		//테이블 만들기
+
+		let intRow = 11;
+		let intColumn = 6;
+
+		let eletable = document.createElement("table");
+		eletable.setAttribute("id", "tab");
+		//<table id="Tab"></table>
+		
+		let eCell;
+		let elerow;
+
+		for (let i = 0; i < intRow; i++) {
+			elerow = document.createElement("tr");
+			//<tr></tr>
+			
+			for (let j = 0; j < intColumn; j++) {
+
+				if (i == 0 ) { //첫행
+						
+						let eCell = document.createElement("th");
+						let eText;
+						
+						switch(j){
+						case 0: eText = document.createTextNode(" ");
+						break;
+						case 1: eText = document.createTextNode("기준일");
+							break;
+						case 2: eText = document.createTextNode("장소명칭");
+						break;
+						case 3: eText = document.createTextNode("행정구역");
+						break;
+						case 4: eText = document.createTextNode("위도");
+						break;
+						case 5: eText = document.createTextNode("경도");
+						break;						
+						}
+					
+						eCell.appendChild(eText);
+						elerow.appendChild(eCell);
+
+				} else { //나머지
+				
+					eCell = document.createElement("td");
+					let eText = document.createTextNode((i + 1) + "행" + ","
+							+ (j + 1) + "열");
+					eCell.appendChild(eText);
+					elerow.appendChild(eCell);
+	
+				}
+
+			}
+			//i 돌면서 tr 생성 <tr><td></td></tr>
+			eletable.appendChild(elerow); //Table tr add
+		}
+		
+		let source = document.createElement("p");
+		let srcText = document.createTextNode("API제공 : 제주 데이터 허브(https://www.jejudatahub.net/)");
+		source.appendChild(srcText);
+		
+		//body
+		document.getElementById("div").appendChild(title);
+		document.getElementById("div").appendChild(eletable);
+		document.getElementById("div").appendChild(source);
+
+	}
+	/*
+	let trarr = document.getElementsByTagName(tr);
+	
+	for(let i = 0; i < trarr.length; i++){
+		document.getElementsByTagName(td[0]).setAttribute("class","index");
+	}*/
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>우편번호</title>
+
+<script type="text/javascript">
+	function zipSearch(obj) {
+		console.log(obj)
+
+		//200-300 서울시 강남구 역삼동
+		// 우편번호와 주소를 분리하고 싶다면?
+		let zip = obj.substring(0, 7); // 200-300만 추출
+		let addr = obj.substr(8);
+		console.log(zip + "/" + addr);
+
+		//부모창과 자식창
+		// 부모창에서 자식창을 오폰한다(관계가 그렇게 지어짐 새창을 연 것을 태어난 것이라고 생각해서 부모자식)
+		// 자식창 입장에서는 부모창이 opener다
+
+		window.opener.mainform.zipcode.value = zip;
+		opener.mainform.addr.value = addr;
+		//현재창은 닫기
+		window.close();
+
+	}
+</script>
+</head>
+<body>
+	<h3>DB 연결 검색한 결과 출력 화면</h3>
+	<form action="" name="zipform">
+
+		<!-- onclick="zipSearch(this)"라고 하면 <input type=~~~ onclick="zipSearch(this)가 전부 올텐데
+	onclick="zipSearch(this.value)라고 파라미터를 주면 그 인풋 태그의 valuer값만 받을 수 있다-->
+		<input type="button" value="200-300 서울시 강남구 역삼동" name="btn"
+			onclick="zipSearch(this.value)"><br> <input
+			type="button" value="200-400 경기도 성남시 삼평동" name="btn"
+			onclick="zipSearch(this.value)"><br> <input
+			type="button" value="300-500 제주시 서귀포동" name="btn"
+			onclick="zipSearch(this.value)"><br>
+	</form>
+</body>
+
+</html>

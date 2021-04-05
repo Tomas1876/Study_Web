@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>내장객체</title>
+<script type="text/javascript">
+	/*
+		javaScript는 다양한 내장 객체를 제공한다
+		객체니까 당연히 new를 사용한다 혹은 명시적으로 new를 하지 않아도 이미 new가 되어있는 함수의 경우 바로 사용 가능하다
+		ex>Date(), Array() 등등
+	*/
+	
+	let today = new Date();
+	document.write(today + "<br>");
+	document.write(today.getFullYear() + "<br>");
+	document.write(today.getMonth() + "<br>");
+	document.write(today.getHours() + "<br>");
+	document.write(today.getMinutes() + "<br>");
+	document.write(today.getSeconds() +"<br>");
+	
+	// java : Math.Random() >> Math클래스가 가진 static함수
+	// javascript도 이런, new를 사용하지 않아도 되는 자원들이 있다 static이라고 이해해도 무방
+	document.write(Math.random() + "<br>");
+	document.write(parseInt((Math.random()*45)+1) + "<br>");
+	
+	document.write(Math.round(3.14) + "<br>");
+	document.write(Math.max(3,8,99,55,10));
+	
+	// 문자열 관련 함수
+	let str="ABCDEF";
+	
+	// document.write()가 너무 많이 쓰이니 아래처럼 할 수도 있다
+	with(document){
+		write(str+"<br>");
+		write(str.length+"<br>");
+		write(str.charAt(2)+"<br>");
+		write(str.indexOf("D")+"<br>");
+		write(str.concat("홍길동")+"<br>");
+
+		// slice(start, end)
+		// subString(start, end)
+		// substr(start, length)
+		
+		let str2 = str.replace("E", "ZZZZZ");
+		write(str2 + "<br>");
+		
+		//현재 str값은 "ABCDEF"
+		write(str.substring(2,4) + "<br>"); //CD 자바와는 다른 결과
+		write(str.substring(1,1) + "<br>"); //
+		write(str.substring(1,2) + "<br>"); // B
+		write(str.substring(1) + "<br>"); // BCDEF
+		
+		let strarr = "A B C D";
+		let arr = strarr.split(" "); //return Array
+		write(arr);
+		
+		// Today
+		// javascript도 개선된 for문을 가지고 있다
+		// java의 경우
+		// for(String s : arr){s값 출력}
+		
+		//javascript의 경우
+		// for(let s in arr){}
+		write("<br>");
+		for( let index in arr){ 
+			write(index + "<br>") // 값을 받는 자바와 달리 자바스크립트는 이렇게 하면 진짜 배열의 index가 출력
+			write(arr[index] + "<br>"); // 이렇게 배열의 index번째 방의 값이라고 해야 원하는 값이 나옴
+		}
+		
+	}
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

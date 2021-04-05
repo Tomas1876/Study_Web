@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*
+	
+	웹브라우저는 소스를 제어하기 위해 자신의 html에 트리 형태로 만들어서 소스르 올려놓는다
+	이것이 바로 DOM이라는 구조다
+	
+	 With the object model, JavaScript gets all the power it needs to create dynamic HTML:
+
+	 JavaScript can change all the HTML elements in the page
+	 JavaScript can change all the HTML attributes in the page
+	 JavaScript can change all the CSS styles in the page
+	 JavaScript can remove existing HTML elements and attributes
+	 JavaScript can add new HTML elements and attributes
+	 JavaScript can react to all existing HTML events in the page
+	 JavaScript can create new HTML events in the page
+	 > 이 작업들은 돔 없이도 할 수 있지만 돔이 제공된다면 더 편하게 할 수 있다
+	 
+	 <요소를 찾을 수 있는 함수>
+	 Method										Description
+	 document.getElementById(id)				Find an element by element id
+	 
+	 document.getElementsByTagName(name)		Find elements by tag name
+	 			> 바디 안에 p태그가 하나만 있을까? 여러 개가 있을 수 있다
+	 			그럼 결국 p의 배열을 이루게 된다 그래서 element가 아니고 elements다
+	 			
+	 document.getElementsByClassName(name)		Find elements by class name
+	 			>이것도 같은 클래스명을 지닌 개 여러개일 수 있어서 복수형!
+	 			
+	 
+	 <요소를 바꿀 수 있는 함수>
+	 Property									Description
+	 element.innerHTML =  new html content		Change the inner HTML of an element
+	 element.attribute = new value				Change the attribute value of an HTML element
+	 element.style.property = new style			Change the style of an HTML element
+	 
+	 Method										Description
+	 element.setAttribute(attribute, value)		Change the attribute value of an HTML element			
+	
+	 <요소를 추가하더나 삭제할 수 있는 함수>
+	 Method										Description
+	 document.createElement(element)			Create an HTML element
+	 document.removeChild(element)				Remove an HTML element
+	 document.appendChild(element)				Add an HTML element
+	 document.replaceChild(new, old)			Replace an HTML element
+	 document.write(text)						Write into the HTML output stream
+	 
+	 
+	 https://www.w3schools.com/js/js_htmldom_document.asp
+	 이벤트 등 함수(많아서 링크)
+	 
+	 
+	 */
+	
+</script>
+</head>
+<body>
+
+	<div id="demo">첫번째</div>
+	<div id="demo">두번째(계층 트리 형태에서 두 div가 아이디가 같을 때 이 div의 아이디는 의미가 없다)</div>
+
+</body>
+
+<script type="text/javascript">
+	let ele_dev = document.getElementById("demo");
+	console.log(ele_dev);
+	// 이 경우 두 div중 첫번째 것만 콘솔에 출력된다
+	// getElementById는 아이디가 같은 것이 여러개일 때, 한 번 찾으면 멈추기 때문에
+	// 결국 가장 높은 계층의 것만 출력(위에서부터 순서대로 내려옴)
+	
+	ele_dev.innerHTML="<b>Hello World</b>";
+	// div나 p태그처럼 value값이 없는 태그는 <div></div> 이 안쪽을 값으로 인식한다
+	// 즉 이 경우 "첫번째"의 값이 바뀌게 된다
+
+</script>
+</html>
+

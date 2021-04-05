@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		table , tr , td {
+			border: 1px solid blue;
+			border-collapse: collapse;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		/*
+			remove() - Removes the selected element (and its child elements)
+			자기자신삭제(자식제거)
+			empty() - Removes the child elements from the selected element
+			자식제거
+		*/
+		$(function(){
+			$('#btncreate').click(function(){
+				let row = $('#row').val();
+				let col = $('#col').val();
+				
+				let startable ="<table>";
+					for(let i = 0 ; i < row ; i++){
+						startable+="<tr>";
+						for(let j = 0 ; j < col ; j++){
+							startable+="<td>(" + i + ")행(" + j + ")열</td>";
+						}
+						startable+="</tr>";
+					}
+				
+				startable+="</table>";
+				console.log(startable);
+				$('#divtable').append(startable); //가장 마지막에 생성한 요소가 뒤에 있다
+			});
+			
+			$('#btndelete').click(function(){
+				//$("#divtable").remove(); // 자식은 물론 자기 자신까지 삭제
+				$("#divtable").empty();
+			});
+			
+			$('#btnmenu').click(function(){
+				//method  chain
+				
+				//$("#menu").clone().appendTo("#submenu");
+				//append는 타겟(붙일 대상)이 앞에 있고 appendTo는 타겟이 앞에 있다는 차이만 있다
+				//위 코드는 menu를 복제해서 submenu의 끝나는 태그 바로 앞에 붙이겠다는 뜻이다
+				
+				$("#menu").clone().prependTo("#submenu");
+				//prepend와 prependTo의 차이도 마찬가지다
+				// ~~To의 장점은 타켓을 나중에 쓸 수 있다는 점이다
+			});
+			
+		});		
+	</script>
+</head>
+<body>
+	<span id="lbldisply">Table Create</span>
+	<input type="text" id="row">행
+	<input type="text" id="col">열
+	<input type="button" value="동적생성" id="btncreate">
+	<input type="button" value="동적제거" id="btndelete">
+	
+	<div id="divtable">
+	
+	</div>
+	
+	<hr>
+	<input type="button" id="btnmenu" value="변경">
+	<div id="menu">HOME</div>
+	<div id="content">CONTENT</div>
+	<div id="submenu">SUBMENU</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 이건 필수 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!--  Jquery  UI (js 파일(함수) , css 파일)  -->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--                                                           themes/뒤의 테마를 변경할 수 있다-->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/sunny/jquery-ui.css">
+	<style type="text/css">
+		#draggable {width: 150px; height: 150px; padding:1 }
+	</style>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#draggable").draggable();
+    });
+</script>
+</head>
+<body>
+    <div id="draggable" class="ui-widget-content">
+        <p>나를 움직여보세요</p>
+    </div>
+</body>
+</html>

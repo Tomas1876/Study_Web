@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//javascript의 함수는 java보다 심플하다 void 이런 거 없다
+	function callConfirm(){ //사용자 정의 함수(반댓말 : 브라우저 내장함수)
+		if(window.confirm("작업내용")){
+			//widow.confirm 내장함수 사용법 > return return / false
+			alert("삭제");
+		}else{
+			alert("취소");
+		}
+	}
+	
+	function showPopup(){
+		window.open("Ex06_popup.html", "zipcode","width=200, height=200");
+		//open 새창 띄우기
+		
+		/*
+		
+			모든 함수가 모든 브라우저에서 해석되는 것은 아니다
+			https://www.w3schools.com/jsref/met_win_open.asp
+			
+			specs parameter의 브라우저별 지원 여부를 확인해야 한다
+			
+		*/
+		
+	}
+	
+	function myFunc(){
+		let mywindow = window.open("Ex06_popup.html", "zipcode","width=500, height=200");
+		
+		//mywindow 새창을 의미한다 >> 팝업창 전체를 의미한다!
+		mywindow.document.write("<p>this is zipcode window</p>");
+		//여기의 document는 mywindow 즉 팝업창을 가리키는 것이다
+	}
+	
+	//java식으로 쓰면 아래는 이렇다
+	//public void goUrlTilme(String url){}
+	//하지만 js는 파라미터의 타입을 쓰지 않는다 let이렇게도 안 쓴다
+	function goUrlTime(url){
+		window.setTimeout("location.href='" + url +"'", 3000);
+		//setTimeout 내장함수
+		// 3초 지나면 첫번째 parameter에 있는 것을 실행해라
+		//location.href="http://www.naver.com"
+	}
+
+</script>
+</head>
+<body>
+<h3>내장함수, 사용자 정의 함수 사용</h3>
+<button onclick="callConfirm()">클릭 사건 발생(호출)</button><br>
+<button onclick="showPopup()">팝업창</button><br>
+<button onclick="myFunc()">팝업객체(Object)</button><br>
+<p>현재 창은 부모창, 띄워진 창은 자식 창이다</p>
+<button onclick="goUrlTime('http://www.daum.net')">3초 후 이동</button><br>
+</body>
+</html>

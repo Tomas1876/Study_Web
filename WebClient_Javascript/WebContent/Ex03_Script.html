@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DOM을 사용하는 javascript</title>
+	<script type="text/javascript">
+		function print(){
+			let ele = document.getElementById("demo");
+			console.log(ele);
+			ele.innerHTML="졸리당";
+		}
+	</script>
+</head>
+<body>
+	<button onclick="print()">눌러보세용</button>
+	<p id="demo">demo라는 id는 p태그의 식별자</p>
+</body>
+</html>

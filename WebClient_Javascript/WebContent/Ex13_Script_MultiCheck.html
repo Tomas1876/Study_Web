@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		let checkflag = "false"; //이건 boolean타입이 아니고 문자열(+ global변수)
+		
+		function checkForm(){
+			let list = document.myform.list; //같은 이름의 요소는 Array를 만들고 주소 리턴한다
+			console.log(list);
+			//list >> Array
+			console.log(list.length);
+			
+			if(checkflag == "false"){
+				for(let index in list){ //index 번호
+					console.log(list[index]);
+					// list[0]번째 엘리먼트를 선택하면 <input type="checkbox" name="list" value=" java">
+					// 내가 원하는 건 저 체크박스의 속성을 checked로 바꾸는 것
+				    //list[0] >> <input type="checkbox" name="list" value=" java">
+				    //<input type="checkbox" name="list" value=" java" >
+				    list[index].checked=true; 
+				  	//이렇게 바꾼다
+					// <input type="checkbox" name="list" value=" java">가
+					//<input type="checkbox" name="list" value=" java" checked>가 됨
+				}
+				checkflag="true";
+				return "[선택해제하기]"
+			}else{
+				for(let index in list){ //index 번호
+				    list[index].checked=false; 
+				}
+				checkflag="false";
+				return "[전체선택]"
+			}
+		}
+		
+		function checkForm2(list){
+			console.log(list);
+			return "return";
+		}
+	</script>
+</head>
+
+<body>
+	<form action="" name="myform">
+		좋아하는 과목은 : <br> 
+		<input type="checkbox" name="list" value=" java">JAVA<br>
+		<input type="checkbox" name="list" value=" oracle">ORACLE<br>
+		<input type="checkbox" name="list" value=" html">HTML<br>
+		<input type="checkbox" name="list" value=" css">CSS<br> 
+		<input type="checkbox" name="list" value=" script">SCRIPT<br> 
+		<input type="button" value="[전체선택] " onclick="this.value = checkForm()"><br>
+		<br> <input type="button" value="[전체선택] " 	onclick="this.value = checkForm2(this.form.list)"><br>
+		<!-- checkForm2(this.form.list) 에서 원래 this는 input 태그 자신을 지칭한다
+		하지만 뒤에 .블라블라.블라블라 이런식으로 붙으면 그 횟수만큼 계증이 상승하게 된다
+		지금은 this.form.list이므로 this의 계층이 인풋에서 하나(폼), 둘(도큐먼트)로 상승해 즉 지금은 도큐먼트가 된다
+		그래서 this.form.list는 결국 도큐먼트 안에 있는 폼의 리스트라는 뜻이 된다 그걸 파라미터로 받는 것!  -->
+	</form>
+</body>
+</html>

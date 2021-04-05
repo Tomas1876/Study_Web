@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//1. 배열 >> [] 즉 let arr = []; 라고 생성 push(), pop()을 이욯해 데이터를 넣고 뺀다
+	//2.JASON 객체 >> {} >> let obj={}; 라고 생성 obj.속성명, obj.함수명
+	
+	// 우리가 원하는 데이터는 단순하지 않다(슬픈현실)
+	// 날씨, 영화 정보, 지하철 정보 등등에서 원하는 정보를 추출하려면
+	// 데이터는 객체와 객체, 객체 안의 배열, 배열 안의 객체 식으로 혼재돼 있다
+	// 여기서 필요한 것을 뽑는 연습을 아주 많이많이 해야 한다!!!
+	
+	let students=[];
+	students.push({이름 : "홍길동", 국어 : 80, 영어 : 60});
+	students.push({이름 : "아무개", 국어 : 100, 영어 : 50});
+	students.push({이름 : "이순신", 국어 : 10, 영어 : 100});
+	
+	//[{},{},{}]
+	//기존의 객체에 함수를 추가
+	for(let index in students){
+		students[index].getSum = function(){ return this.국어 + this.영어;}
+		students[index].getAverage = function(){ return this.getSum() / 2;}
+	}
+	
+	console.log(students);
+	
+	for(let index in students){
+		console.log(students[index].이름);
+		console.log(students[index].getSum());
+		console.log(students[index].getAverage());
+		
+		
+	}
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

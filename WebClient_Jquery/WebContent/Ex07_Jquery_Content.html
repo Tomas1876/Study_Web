@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Content</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			// 아래는 getter 격의 함수들이다
+			$("#btn1").click(function(){
+				alert("text : " + $("#test").text()); //p태그 내부의 b태그(진하게)는 인정되지 않는다 무시
+			});
+
+			$("#btn2").click(function(){
+				alert("html : " + $("#test").html()); // b태그를 <b></b>로 가져온다
+			});
+
+			$("#btn3").click(function(){
+				//$("#test").html("<div>AAAAA</div>");
+				$("#test").text("<div>AAAAA</div>");
+			});
+		});
+	</script>
+</head>
+<body>
+	<!-- p태그는 input태그처럼 value값이 없다
+	대신 아래의 안녕하세요, 정말, 방가방가 등은 text로 지칭한다-->
+	<p id="test">안녕하세요<b>정말</b>방가방가</p>
+	<button id="btn1">show text</button>
+	<button id="btn2">show html</button>
+	<button id="btn3">html</button>
+	
+</body>
+</html>
+
+

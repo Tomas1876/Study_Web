@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+   <style type="text/css">
+   table{
+      width: 100%;
+   }
+   table,tr,td{
+      border: 1px solid; border-collapse: collapse;
+   }
+</style>
+<script type="text/javascript">
+   let data = [
+         {
+            "baseDate" : "20200525",
+            "macAddress" : "55e90697f271708efb35be0a0ce4812f91e54ab626c05cf1838aa47af3422f58",
+            "apGroupName" : "서문가구거리",
+            "installLocationDetail" : "클린하우스 동",
+            "category" : "테마거리",
+            "categoryDetail" : "테마거리",
+            "addressDong" : "제주특별자치도 제주시 용담일동",
+            "addressDetail" : "제주시 서문로 55 ",
+            "latitude" : "33.51164",
+            "longitude" : "126.51783"
+         },
+         {
+            "baseDate" : "20200525",
+            "macAddress" : "a72b1f6b2d45418bf5dc8c089dd7508ad06d1b68b88261317d3eb032971b8f0d",
+            "apGroupName" : "서귀포매일올레시장",
+            "installLocationDetail" : "사거리판넬벽-서쪽방향-30도",
+            "category" : "전통시장",
+            "categoryDetail" : "전통시장",
+            "addressDong" : "제주특별자치도 서귀포시 서귀동",
+            "addressDetail" : "서귀포시 서귀동 271-30",
+            "latitude" : "33.249208",
+            "longitude" : "126.563331"
+         },
+         {
+            "baseDate" : "20200525",
+            "macAddress" : "2d9247f87dc1d150e1f0a7a3852332edd626c5ca09bb8cde99d79c5780778e00",
+            "apGroupName" : "삼성혈",
+            "installLocationDetail" : "토산품점 서",
+            "category" : "관광지",
+            "categoryDetail" : "사설관광지",
+            "addressDong" : "제주특별자치도 제주시 이도일동",
+            "addressDetail" : "제주시 삼성로 22(이도일동 1313) ",
+            "latitude" : "33.505091",
+            "longitude" : "126.528598"
+         },
+         {
+            "baseDate" : "20200525",
+            "macAddress" : "23c80fd5f31a6152ac607922fc296978048dcde65bac3834723072d31b44a995",
+            "apGroupName" : "18코스",
+            "installLocationDetail" : "삼양해수욕장 동쪽 공중화장실 북동",
+            "category" : "올레코스",
+            "categoryDetail" : "올레코스",
+            "addressDong" : "제주특별자치도 제주시 삼양일동",
+            "addressDetail" : "제주시 서흘1길 32 ",
+            "latitude" : "33.529512",
+            "longitude" : "126.589086"
+         },
+         {
+            "baseDate" : "20200525",
+            "macAddress" : "066f94f37f81dd91fb151650a1db4cacf1d9c22126c8e068a2bc96ca415199a4",
+            "apGroupName" : "삼다공원",
+            "installLocationDetail" : "팔각정방향 베란다",
+            "category" : "공원",
+            "categoryDetail" : "공원",
+            "addressDong" : "제주특별자치도 제주시 연동",
+            "addressDetail" : "제주시 문연로 6",
+            "latitude" : "33.488932",
+            "longitude" : "126.497016"
+         },
+         {
+            "baseDate" : "20200525",
+            "macAddress" : "c0433d882b4c916579c2bfe61710860bd195eb07881fd2192b0f7ec79bf04517",
+            "apGroupName" : "세화 해변",
+            "installLocationDetail" : "남자화장실 북",
+            "category" : "해변",
+            "categoryDetail" : "해변",
+            "addressDong" : "제주특별자치도 제주시 구좌읍 세화리",
+            "addressDetail" : "제주시 구좌읍 해맞이해안로 1391 x",
+            "latitude" : "33.528317",
+            "longitude" : "126.857243"
+         },
+         {
+            "baseDate" : "20200525",
+            "macAddress" : "95a477b429524ff21cc1af09e3a1ba6686e81ef6f39082b9606d6d45ec7f5083",
+            "apGroupName" : "한라생태숲",
+            "installLocationDetail" : " 안내소 벽면 북",
+            "category" : "숲길",
+            "categoryDetail" : "숲길",
+            "addressDong" : "제주특별자치도 제주시 용강동",
+            "addressDetail" : "제주시 516로 2596(용강동)",
+            "latitude" : "33.430931",
+            "longitude" : "126.596935"
+         },
+         {
+            "baseDate" : "20200525",
+            "macAddress" : "d3f517e32640e50a47459ebc395d0a315dfd25c3632b1389879d0d992ff7c60c",
+            "apGroupName" : "버스정류소_대천환승정류장(종점)",
+            "installLocationDetail" : "대천동버스정류장",
+            "category" : "버스정류소",
+            "categoryDetail" : "버스정류소",
+            "addressDong" : "제주특별자치도 제주시 구좌읍 송당리",
+            "addressDetail" : "제주시 구좌읍 대천길 2-2 앞(송당리 산 126-3) ",
+            "latitude" : "33.436243",
+            "longitude" : "126.736818"
+         },
+         {
+            "baseDate" : "20200525",
+            "macAddress" : "b00f1a2467e79e5c868cc9f6217985bc406244c06653383b55be4f431b542775",
+            "apGroupName" : "로케디오월드",
+            "installLocationDetail" : "매표소",
+            "category" : "관광지",
+            "categoryDetail" : "사설관광지",
+            "addressDong" : "제주특별자치도 제주시 애월읍 봉성리",
+            "addressDetail" : "제주시 애월읍 화전길 3 ",
+            "latitude" : "33.352171",
+            "longitude" : "126.360491"
+         },
+         {
+            "baseDate" : "20200525",
+            "macAddress" : "3a1c91bed03a0ed4a3217c50e18f0690b22162367d10024a1f919ec0a31b1e48",
+            "apGroupName" : "더마파크",
+            "installLocationDetail" : " 매표소외부(입장로)",
+            "category" : "관광지",
+            "categoryDetail" : "사설관광지",
+            "addressDong" : "제주특별자치도 제주시 한림읍 월림리",
+            "addressDetail" : "제주시 한림읍 월림7길 155",
+            "latitude" : "33.354354",
+            "longitude" : "126.243399"
+         } ]
+   //console.log(data);
+   /* for (let index in data) {
+      console.log(data[index].apGroupName);
+   } */
+   //baseDate,apGroupName,addressDong
+   //latitude 위도 longitude 경도
+   //tr 행 td 열
+   window.onload = function() {
+      let intRow = 11;
+      let intColumn = 6;
+      let eletable = document.createElement("table");
+      
+      
+      
+      for(let i = 0; i < intRow; i++){
+         let elerow = document.createElement("tr");
+         for(let j = 0; j < intColumn; j++){
+            let eCell = document.createElement("td");
+            let textnode = document.createTextNode(data[j].baseDate.value);
+            
+            
+            let textnode1 = document.createTextNode(data[j].apGroupName);
+            let textnode2 = document.createTextNode(data[j].addressDong);
+            let textnode3 = document.createTextNode(data[j].latitude);
+            let textnode4 = document.createTextNode(data[j].longitude);
+            //let textnode = document.createTextNode("살려줘");
+            eCell.appendChild(textnode);
+			/*
+            eCell1.appendChild(textnode1);
+            eCell2.appendChild(textnode2);
+            eCell3.appendChild(textnode3);
+            eCell4.appendChild(textnode4);
+            elerow.appendChild(eCell);
+            elerow.appendChild(eCell1);
+            elerow.appendChild(eCell2);
+            elerow.appendChild(eCell3);
+            elerow.appendChild(eCell4);
+			*/
+         }
+         eletable.appendChild(elerow);
+      }
+      document.getElementById("div").appendChild(eletable);
+   }
+
+      for (let index in data) {
+         data[index].baseDate;
+         data[index].apGroupName;
+         data[index].addressDong;
+         data[index].latitude;
+         data[index].longitude;
+         
+         console.log(data[index].baseDate);
+         console.log(data[index].apGroupName);
+         console.log(data[index].addressDong);
+         console.log(data[index].latitude);
+         console.log(data[index].longitude);
+      }
+      
+
+</script>
+</head>
+<body>
+   <div id="div"></div>
+</body>
+</html>

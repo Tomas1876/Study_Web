@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="Ex33.jsp " id="frm">
+		<fieldset>
+			<legend>주소록</legend>
+			<textarea rows="10" cols="30" name="txt"></textarea>
+			<input type="submit" id="sub" value="전송하기">
+		</fieldset>
+	</form>
+</body>
+<script type="text/javascript">
+	let add = ["아무개","email:i7027@naver.com"];
+	let frm = document.getElementById("frm");
+	
+	function addr_Search(event){
+		console.log(event.type);
+		
+		let textarea = frm.txt;
+		textarea.value = "이름/주소\n";
+		textarea.value += addr[0] + "," + add[1] + "\n";
+	}
+	
+	// 이 아래부터가 !!POINT!!
+	frm.addEventListener('submit', function(event){
+		event.preventDefault();
+		addr_Search(event);
+	});
+	// 이러면 버튼 눌렀을 때만 잠깐 textarea.value가 나타났다가 없어진다
+	// submit은 자체적으로 서버로 전송한다는 이벤트를 가지고 있기 때문에
+	// 이런 일이 발생하는 것 그러므로 submit이 가진 디폴트 이벤트(전송)을 죽여서 막아야 한다
+	// event.preventDefault(); 다
+	// 보통 submit이나 a 태그에 건다
+	
+</script>
+
+</html>

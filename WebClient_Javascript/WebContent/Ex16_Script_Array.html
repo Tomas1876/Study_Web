@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+	
+	// 제어문 스트레칭
+	// while문
+	let i = 1;
+	let sum = 0;
+	while(i <= 10){
+		sum += i;
+		i++;
+	}
+	document.write("sum : " + sum + "<br>" + i + "<br>");
+	
+	//for문
+	let sum2 = 0;
+	for(let i = 0; i <= 10; i++){
+		if( i % 3 === 0 ){
+			console.log("i : " + i );
+			continue;
+		}
+		console.log("for i : " + i);
+		sum2+i;
+	}
+	document.write("sum2 : " + sum + "<br>" + i + "<br>");
+	
+	//do while
+	let a = 1;
+	do{
+		document.write(a + "<br>");
+		a++;
+	}while(a < 11)
+	
+	// 개선된 for문
+	/*
+	for(let i in array){
+		
+	}
+	*/
+	/*
+		java : 정적배열(Array) 동적배열(Collection)
+		int[] arr = new int[3];
+		int[] arr = new int[]{1,2,3};
+		int[] arr = {1,2,3};
+		
+		ArrayList al = new ArrayList();
+		al.add(1);
+		al.add(2);
+		
+		javascript >> 정적이나 동적의 구분이 없다
+		선언방법
+		let arr = []; 가장 정석. []안에 뭐가 들어갈 필요가 없다(java의 동적배열과 더 가깝다고 생각하면 될듯)
+		arr.push();
+	*/
+	
+	let arr = [10, 20, 30];
+	for(let i = 0; i < arr.length; i++){
+		document.write(arr[i]+"<br>");
+	}
+	
+	let eng = new Array(3); // 개발자들이 별로 선호하지 않는 방법 방만 세개 만듦
+	for(let i = 0; i <eng.length; i++){
+		document.write(eng[i]+"<br>");
+	}
+	// 이 코드는 eng에 방만 만들고 값은 없는데 값을 뽑아내려 했으니 undefined
+	document.write("<hr>");
+	
+	eng[0] = 100;
+	eng[1] = 100;
+	eng[2] = 100;
+	// 개발자들이 별로 선호하지 않는 방법 방만 세개 만듦
+	for(let i = 0; i <eng.length; i++){
+		document.write(eng[i]+"<br>");
+	}
+	
+	let arr2 = [];
+	arr2.push(10);
+	arr2.push(20);
+	// 그러니까 정석대로 배열을 선언하면 비어있고, push를 쓰니 stack과 같은 자료구조다
+	
+	// 1. 배열 기본 생성 방법
+	let array = new Array(5);;
+	
+	// 2. 생성 및 초기화
+	let array2 = new Array(10,20,30);
+	
+	//3. 동적배열(가장 추천하는 방법)
+	let array3 = [1,2,3];
+	let array4 = [];
+	arr2.push(10);
+	arr2.push(11);
+	document.write(array4.pop);
+	
+	</script>
+</head>
+<body>
+
+</body>
+</html>

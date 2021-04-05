@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+window.onload = function(){
+	let btnobj = document.getElementById("btnGetData");
+	//이벤트 처리 >> 동적 처리
+	//<input type="button" onclick=""> 좋은 방법이 아니다
+	btnobj.onclick = function(){ //객체.이벤트 = function(){}
+		let txtmsg = document.getElementById("txtmessage");
+		let str="";
+		str += "ID : " + txtmsg.getAttribute("id");
+		str += "\n value : " + txtmsg.getAttribute("value");
+		str += "\n value : " + txtmsg.value;
+		str += "\n length: " + txtmsg.value.length;
+		
+		console.log(str);
+		
+	}
+	
+	document.getElementById("btnCreate").onclick = function(){
+		let txtname = document.createElement("input");
+		//<input>
+		txtname.setAttribute("type", "text");
+		//<input type="text">
+		txtname.setAttribute("id" , "txtbox");
+		txtname.setAttribute("value", "홍길동");
+		
+		document.body.appendChild(txtname);
+	}
+	
+}
+
+/*
+window.onload = function(){
+	
+	let btnobj = document.getElementById("btnGetData");
+	
+	// 이벤트 처리도 동적으로 할 수 있다!
+	// <input type="button" onclick="" > 이건 inline방식이라 사실 유지보수가 어렵다
+	
+	btnobj.onclick = function(){ // 객체가 가진 이벤트에 함수를 달아준 것
+		
+		let txtmsg = document.getElementById("txtmessage");
+		let str = "";
+		
+		str += "ID : " + txtmsg.getAttribute("id");
+		
+		str += "\n value : " + txtmsg.getAttribute("value");
+		// 사실 꼭 이렇게 value를 가져오지 않아도 된다
+		
+		str += "\n value : " + txtmsg.value;
+		str += "\n length : " + txtmsg.value.length;
+		
+		console.log(str);		
+		
+	}
+	
+	
+	
+}
+*/
+</script>
+</head>
+<body>
+	<input type="text" id="txtmessage" value="hello">
+	<input type="button" value="getinfo" id="btnGetData">
+	<hr>
+	<input type="button" value="동적생성" id="btnCreate">
+</body>
+</html>

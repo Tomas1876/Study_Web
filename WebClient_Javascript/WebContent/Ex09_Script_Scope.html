@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>Outside myFunction() carName is undefined.</p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+</body>
+<script>
+//GLOBAL variable(<script>안에서 쓰임) : 모든 함수에서 사용 가능
+var gname = "world";
+
+myFunction();
+
+function myFunction() {
+	//[ 사용금지 ]
+	// 사실 함수 안에 변수를 만든다는 건 함수 밖에서는 유효하지 않겠다는 뜻이다
+	// 그런데 아래처럼 함수 안에서 변수 타입을 정해주지 않으면 지역변수가 아니라 golbal이 된다
+	// 이러면 함수 밖에서 aaa의 값을 건드릴 수 있어서 원치 않는 값이 나올 확률이 높아진다
+	// 함수 안에 변수를 선언할 때 타입을 써줘야 한다
+	aaa ="아무개"; //함수안에 타입이 없는 변수 : global 
+	console.log(aaa);
+	
+	//Local JavaScript Variables
+    var carName = "Volvo"; 
+  	document.getElementById("demo1").innerHTML = typeof(carName) + " " + carName +"<hr>" ;
+  	//Global
+  	document.getElementById("demo3").innerHTML = typeof(gname) + " " + gname;
+}
+
+document.getElementById("demo2").innerHTML = typeof(carName) +"<hr>" ;
+document.getElementById("demo4").innerHTML = typeof(gname);
+/*  
+  전 (이전) : var
+  ES2015  두가지 키워드 : let  , const
+  
+  1. Global
+  2. Local
+  3. new block  : let , const
+ 
+ 
+ 
+ */
+</script>
+</html>

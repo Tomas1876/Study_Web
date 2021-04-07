@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style type="text/css">
+		#menudiv {
+			width: 300px;
+			height: 300px;
+			float: left;
+			margin: 3px;
+			background-color: gold;
+		}
+	</style>
+	<script type="text/javascript">
+		/*
+		
+			low-level interface 비동기 함수(jquery.ajax(), $.ajax())
+			$.ajax(url,[settings]);
+		
+			API : https://api.jquery.com/jQuery.ajax/
+		
+			url : 요청주소
+			settings : 여러 개의 옵션을 거는 것(JSON 객체 형태로)
+				- dataType : 서버가 클라이언트에게 응답하는 데어터 형식의 정의
+					1. Text : jason객체, html, script, text(responseText)
+					2. xml : xml객체(responseXml)
+		*/
+		
+		$(function(){
+			$("#message").click(function(){
+				
+				$.ajax(				
+						{
+							url:"Ex02_Server_menu.html",
+							dataType:"html", //서버가 응답하는 데이터 형식 정의한 것
+							success : function(responsedata){
+								//서버에서 응답이 왔고, 그 응답이 정상(200~299)일 경우!
+								//그러니 여기에 로직을 짜준다
+								//$("#menudiv").html(responsedata);
+								
+								// 위처럼 끝내지 말고 응답이 온 걸 jquery 함수에 넣어보자
+								// 이렇게 하면 $("#menudiv").html(responsedata);가 다 출력되는 것이 아니라
+								// 그 중 li만 출력된다
+								$("#menudiv").html($(responsedata).find('li'));
+							}
+ 						}
+						
+				);
+				
+			});
+		})
+	</script>
+</head>
+<body>
+		<div id="menudiv">
+			<a href="#" id="menu1"></a>
+		</div>
+		<span id="message">클릭하세요</span>
+</body>
+</html>

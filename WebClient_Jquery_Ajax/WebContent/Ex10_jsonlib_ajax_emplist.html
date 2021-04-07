@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+		$(function(){
+			$("#btn").click(function(){
+				//비동기처리 하기
+				$.ajax(
+						{	
+							//이렇게 아이피를 입력하면 에러가 발생한다 이건 js보안상 당연한 일
+							//blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+							//url:"http://192.168.0.8:8090/WebClient_Jquery_Ajax/Ex10_jsonlib_emplist.jsp",
+							// jsp파일에서 풀어주어야 한다
+							url:"http://192.168.0.8:8090/WebClient_Jquery_Ajax/Ex10_jsonlib_emplist.jsp",
+							
+							//이건 당연히 정상작동한다
+							//url:"Ex10_jsonlib_emplist.jsp",
+							type:"get",
+							dataType:"JSON", //중요! 이게 문자열이 아니라 객체로 바꿔준다(오타나면 문자열로 넘어옴)
+							success:function(data){
+								console.log(data);
+								
+								//이하 가공은 상황에 따라, 개발자 마음에 따라!
+								$.each(data, function(index, obj){
+									$("#list").append(
+										"<tr><td>"+index + "</td><td>"+obj.empno+ "</td><td>"+obj.ename+ "</td><td>"+
+										obj.sal +  "</td><td>" + obj.job + "</td><td>" + obj.comm +"</td></tr>"
+									);
+								});
+							},
+							error:function(xhr){
+								alert(xhr.status + "ERROR");
+							}
+						}
+				);
+			});
+		});
+	
+	</script>
+</head>
+<body>
+
+<h3>EMP LIST</h3>
+<input type="button" value="emplist" id="btn">
+<hr>
+<table id="list" border="1">
+		
+		</table>
+
+</body>
+</html>

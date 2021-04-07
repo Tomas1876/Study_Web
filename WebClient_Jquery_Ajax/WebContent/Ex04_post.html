@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+	
+	/*
+		나쁜 파라미터의 예
+		1.
+		  $.post(Ex04_Server.jsp?name=hong&pwd=1004.. 이렇게 다 쓰는 것
+		
+		2.		
+		  let name = $("#name").val();
+		  let pwd = $("#pwd").val();
+		  let param = "name="+name+"pwd="+pwd;
+		  
+		그렇다면 좋은 코드는?
+				JASON 객체!
+		const data = {"name" : $("#name").val(), "pwd" : $("#pwd").val()}
+		이렇게 하는 것이 권장사항이다
+		위의 세 방법은 결과 모두 동일하지만 오류 발생확률이나 유지보수 측면에서 객체를 이용하는 것이 훨씬 좋다
+	*/
+	
+		$(function(){
+			$("#btn").click(function(){
+				const data = {"name" : $("#name").val(), "pwd" : $("#pwd").val()}
+				$.post("Ex04_Server.jsp", data, function(responsedata){
+					$("#message").html(responsedata);
+				});
+			});
+		});
+	
+	</script>
+</head>
+<body>
+	이름 :  <input type="text" name="name" id="name"><br>
+	비번 :  <input type="text" name="pwd" id="pwd"><br>
+	
+	<input type="button" id="btn" value="비동기전송">
+	<hr>
+	<div id="message"></div> 
+</body>
+</html>
